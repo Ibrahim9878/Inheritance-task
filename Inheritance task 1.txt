@@ -1,0 +1,528 @@
+#include <iostream>
+#include <string>
+#include <cassert>
+using namespace std;
+#pragma region Task1
+//task 1 Single
+//class Person
+//{
+//    string name;
+//    string surname;
+//    string Fname;
+//    int age;
+//public:
+//    Person(string name, string surname, string Fname, int age)
+//    {
+//        SetName(name);
+//        SetSurname(surname);
+//        SetFname(Fname);
+//        SetAge(age);
+//    }
+//
+//    void SetName(string name)
+//    {
+//        if (name.size() < 3 && name.size() > 18) assert(!"Ad sehvdir");
+//        this->name = name;
+//    }
+//    void SetSurname(string surname)
+//    {
+//        if (surname.size() < 3 && surname.size() > 18) assert(!"Soyad sehvdir");
+//        this->surname = surname;
+//    }
+//    void SetFname(string Fname)
+//    {
+//        if (Fname.size() < 3 && Fname.size() > 18) assert(!"Ata adi sehvdir");
+//        this->Fname = Fname;
+//    }
+//
+//    void SetAge(int Age)
+//    {
+//        if (Age > 5 && Age < 100) assert(!"Age sehvdir");
+//        this->age = Age;
+//    }
+//
+//    string GetName()
+//    {
+//        return name;
+//    }
+//    string GetSurname()
+//    {
+//        return surname;
+//    }
+//    string GetFname()
+//    {
+//        return Fname;
+//    }
+//    int GetAge()
+//    {
+//        return age;
+//    }
+//
+//    void Print()
+//    {
+//        cout << "Ad: " << name << endl;
+//        cout << "Soyad: " << surname << endl;
+//        cout << "Ata adi: " << Fname << endl;
+//    }
+//};
+//
+//class Student : public Person
+//{
+//    double score;
+//    int ExamScore;
+//    int bookCount;
+//public:
+//    void SetScore(double score)
+//    {
+//        if (score < 7 && score > 12) assert(!"Score sehvdir");
+//        this->score = score;
+//    }
+//
+//    void SetExamScore(int ExamScore)
+//    {
+//        if (ExamScore < 7 && ExamScore > 12) assert(!"Kesildin");
+//        this->ExamScore = ExamScore;
+//    }
+//    void SetBookCount(int BookCount)
+//    {
+//        if (BookCount < 0) assert(!"Niye kitabin yoxduuuuu");
+//        this->bookCount = BookCount;
+//    }
+//
+//    double GetScore()
+//    {
+//        return score;
+//    }
+//    int GetExamScore()
+//    {
+//        return ExamScore;
+//    }
+//    int GetBookCount()
+//    {
+//        return bookCount;
+//    }
+//    Student(string name, string surname, string Fname, int age, double Score, int ExamScore, int BookCount):Person(name,surname,Fname,age)
+//    {
+//        SetScore(Score);
+//        SetExamScore(ExamScore);
+//        SetBookCount(BookCount);
+//    }
+//
+//    void Print()
+//    {
+//        Person::Print();
+//        cout << "Score: " << score << endl;
+//        cout << "ExamScore: " << ExamScore << endl;
+//        cout << "Book Count: " << bookCount << endl;
+//    }
+//};
+#pragma endregion
+
+#pragma region Task2
+//Multilevel
+class Person
+{
+public:
+    string name;
+    string surname;
+    int age;
+    Person(string name, string surname, int age)
+    {
+        SetName(name);
+        SetSurname(surname);
+        this->age = age;
+    }
+        void SetName(string name)
+    {
+        if (name.size() < 3 && name.size() > 18) assert(!"Ad sehvdir");
+        this->name = name;
+    }
+    void SetSurname(string surname)
+    {
+        if (surname.size() < 3 && surname.size() > 18) assert(!"Soyad sehvdir");
+        this->surname = surname;
+    }
+
+    void Print()
+    {
+        cout << "Name: " << name << endl;
+        cout << "Surname: " << surname << endl;
+        cout << "Age: " << age << endl;
+    } 
+
+};
+class Father : public Person
+{
+public:
+    string qanQrupu;
+    string GozRengi;
+    Father(string name, string surname, int age,string Qanqrupu, string Gozrengi): Person(name, surname, age)
+    {
+        qanQrupu = Qanqrupu;
+        GozRengi = Gozrengi;
+    }
+    void Print()
+    {
+        Person::Print();
+        cout << "Qan qrupu: " << qanQrupu << endl;
+        cout << "Gozrengi: " << GozRengi << endl;
+    }
+};
+
+class Child : public Father
+{
+public:
+    string school;
+    string TeacherName;
+
+    Child(string Qanqrupu, string Gozrengi, string school, string TeacherName):Father(Qanqrupu, Gozrengi)
+    {
+        this->school = school;
+        this->TeacherName = TeacherName;
+    }
+
+    void Print()
+    {
+        Father::Print();
+        cout << "School: " << school << endl;
+        cout << "TeacherName: " << TeacherName << endl;
+    }
+};
+#pragma endregion
+
+
+#pragma region Task3
+//Multiple
+class Father
+{
+    string FatherName;
+    string FatherSurname;
+    string GrandFatherName;
+    int FatherAge;
+public:
+    Father(string FatherName, string FatherSurname, string GrandFatherName, int FatherAge)
+    {
+        SetName(FatherName);
+        SetSurname(FatherSurname);
+        SetFname(GrandFatherName);
+        SetAge(FatherAge);
+    }
+
+    void SetName(string FatherName)
+    {
+        if (FatherName.size() < 3 && FatherName.size() > 18) assert(!"Ad sehvdir");
+        this->FatherName = FatherName;
+    }
+    void SetSurname(string FatherSurname)
+    {
+        if (FatherSurname.size() < 3 && FatherSurname.size() > 18) assert(!"Soyad sehvdir");
+        this->FatherSurname = FatherSurname;
+    }
+    void SetFname(string GrandFatherName)
+    {
+        if (GrandFatherName.size() < 3 && GrandFatherName.size() > 18) assert(!"Ata adi sehvdir");
+        this->GrandFatherName = GrandFatherName;
+    }
+
+    void SetAge(int FatherAge)
+    {
+        if (FatherAge > 5 && FatherAge < 100) assert(!"Age sehvdir");
+        this->FatherAge = FatherAge;
+    }
+
+    string GetName()
+    {
+        return FatherName;
+    }
+    string GetSurname()
+    {
+        return FatherSurname;
+    }
+    string GetFname()
+    {
+        return GrandFatherName;
+    }
+    int GetAge()
+    {
+        return FatherAge;
+    }
+
+    void Print()
+    {
+        cout << "Ata Adi: " << FatherName << endl;
+        cout << "Ata Soyadi: " << FatherSurname << endl;
+        cout << "Atanin Atasi adi: " << GrandFatherName << endl;
+        cout << "Ata Yas: " << FatherAge << endl;
+    }
+};
+class Mother
+{
+    string MotherName;
+    string MotherSurname;
+    string GrandMotherName;
+    int MotherAge;
+public:
+    Mother(string MotherName, string MotherSurname, string GrandMotherName, int MotherAge)
+    {
+        SetName(MotherName);
+        SetSurname(MotherSurname);
+        SetFname(GrandMotherName);
+        SetAge(MotherAge);
+    }
+
+    void SetName(string MotherName)
+    {
+        if (MotherName.size() < 3 && MotherName.size() > 18) assert(!"Ad sehvdir");
+        this->MotherName = MotherName;
+    }
+    void SetSurname(string MotherSurname)
+    {
+        if (MotherSurname.size() < 3 && MotherSurname.size() > 18) assert(!"Soyad sehvdir");
+        this->MotherSurname = MotherSurname;
+    }
+    void SetFname(string GrandMotherName)
+    {
+        if (GrandMotherName.size() < 3 && GrandMotherName.size() > 18) assert(!"Ata adi sehvdir");
+        this->GrandMotherName = GrandMotherName;
+    }
+
+    void SetAge(int MotherAge)
+    {
+        if (MotherAge > 5 && MotherAge < 100) assert(!"Age sehvdir");
+        this->MotherAge = MotherAge;
+    }
+
+    string GetName()
+    {
+        return MotherName;
+    }
+    string GetSurname()
+    {
+        return MotherSurname;
+    }
+    string GetFname()
+    {
+        return GrandMotherName;
+    }
+    int GetAge()
+    {
+        return MotherAge;
+    }
+
+    void Print()
+    {
+        cout << "Ata Adi: " << MotherName << endl;
+        cout << "Ata Soyadi: " << MotherSurname << endl;
+        cout << "Atanin Atasi adi: " << GrandMotherName << endl;
+        cout << "Ata Yas: " << MotherAge << endl;
+    }
+};
+
+class Student : public Father, Mother
+{
+    double score;
+    int ExamScore;
+    int bookCount;
+public:
+    void SetScore(double score)
+    {
+        if (score < 7 && score > 12) assert(!"Score sehvdir");
+        this->score = score;
+    }
+
+    void SetExamScore(int ExamScore)
+    {
+        if (ExamScore < 7 && ExamScore > 12) assert(!"Kesildin");
+        this->ExamScore = ExamScore;
+    }
+    void SetBookCount(int BookCount)
+    {
+        if (BookCount < 0) assert(!"Niye kitabin yoxduuuuu");
+        this->bookCount = BookCount;
+    }
+
+    double GetScore()
+    {
+        return score;
+    }
+    int GetExamScore()
+    {
+        return ExamScore;
+    }
+    int GetBookCount()
+    {
+        return bookCount;
+    }
+    Student(string FatherName, string FatherSurname, string GrandFatherName, int FatherAge, string MotherName, string MotherSurname, string GrandMotherName, int MotherAge, double Score, int ExamScore, int BookCount) :Father(FatherName, FatherSurname, GrandFatherName, FatherAge) ,Mother(MotherName,  MotherSurname,  GrandMotherName,  MotherAge)
+    {
+        SetScore(Score);
+        SetExamScore(ExamScore);
+        SetBookCount(BookCount);
+    }
+
+    void Print()
+    {
+        Father::Print();
+        Mother::Print();
+        cout << "Score: " << score << endl;
+        cout << "ExamScore: " << ExamScore << endl;
+        cout << "Book Count: " << bookCount << endl;
+    }
+};
+
+#pragma endregion
+
+
+#pragma region Task4
+//Hierarchic
+//class Person
+//{
+//    string name;
+//    string surname;
+//    string Fname;
+//    int age;
+//public:
+//    Person(string name, string surname, string Fname, int age)
+//    {
+//        SetName(name);
+//        SetSurname(surname);
+//        SetFname(Fname);
+//        SetAge(age);
+//    }
+//
+//    void SetName(string name)
+//    {
+//        if (name.size() < 3 && name.size() > 18) assert(!"Ad sehvdir");
+//        this->name = name;
+//    }
+//    void SetSurname(string surname)
+//    {
+//        if (surname.size() < 3 && surname.size() > 18) assert(!"Soyad sehvdir");
+//        this->surname = surname;
+//    }
+//    void SetFname(string Fname)
+//    {
+//        if (Fname.size() < 3 && Fname.size() > 18) assert(!"Ata adi sehvdir");
+//        this->Fname = Fname;
+//    }
+//
+//    void SetAge(int Age)
+//    {
+//        if (Age > 5 && Age < 100) assert(!"Age sehvdir");
+//        this->age = Age;
+//    }
+//
+//    string GetName()
+//    {
+//        return name;
+//    }
+//    string GetSurname()
+//    {
+//        return surname;
+//    }
+//    string GetFname()
+//    {
+//        return Fname;
+//    }
+//    int GetAge()
+//    {
+//        return age;
+//    }
+//
+//    void Print()
+//    {
+//        cout << "Ad: " << name << endl;
+//        cout << "Soyad: " << surname << endl;
+//        cout << "Ata adi: " << Fname << endl;
+//    }
+//};
+//
+//class Student : public Person
+//{
+//    double score;
+//    int ExamScore;
+//    int bookCount;
+//public:
+//    void SetScore(double score)
+//    {
+//        if (score < 7 && score > 12) assert(!"Score sehvdir");
+//        this->score = score;
+//    }
+//
+//    void SetExamScore(int ExamScore)
+//    {
+//        if (ExamScore < 7 && ExamScore > 12) assert(!"Kesildin");
+//        this->ExamScore = ExamScore;
+//    }
+//    void SetBookCount(int BookCount)
+//    {
+//        if (BookCount < 0) assert(!"Niye kitabin yoxduuuuu");
+//        this->bookCount = BookCount;
+//    }
+//
+//    double GetScore()
+//    {
+//        return score;
+//    }
+//    int GetExamScore()
+//    {
+//        return ExamScore;
+//    }
+//    int GetBookCount()
+//    {
+//        return bookCount;
+//    }
+//    Student(string name, string surname, string Fname, int age, double Score, int ExamScore, int BookCount):Person(name,surname,Fname,age)
+//    {
+//        SetScore(Score);
+//        SetExamScore(ExamScore);
+//        SetBookCount(BookCount);
+//    }
+//
+//    void Print()
+//    {
+//        Person::Print();
+//        cout << "Score: " << score << endl;
+//        cout << "ExamScore: " << ExamScore << endl;
+//        cout << "Book Count: " << bookCount << endl;
+//    }
+//};
+//
+//class Police:public Person 
+//{
+//    string Weapon;
+//    string Car;
+//public:
+//    Police(string name, string surname, string Fname, int age, string Weapon, string Car): Person(name, surname, Fname, age)
+//    {
+//        this->Weapon = Weapon;
+//        this->Car = Car;
+//    }
+//    string GetWeapon()
+//    {
+//        return Weapon;
+//    }
+//    string GetCar()
+//    {
+//        return Car;
+//    }
+//
+//    void Print()
+//    {
+//        Person::Print();
+//        cout << "Weapon: " << Weapon << endl;
+//        cout << "Car: " << Car << endl;
+//    }
+//};
+#pragma endregion
+
+#pragma region task4
+
+#pragma endregion
+
+int main()
+{
+    
+}
+
+
